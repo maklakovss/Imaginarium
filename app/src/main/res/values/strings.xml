@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Imaginarium</string>
+    <string name="name_caption">Введите имя:</string>
 </resources>
