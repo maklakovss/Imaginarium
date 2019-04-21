@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Imaginarium</string>
+    <string name="name_caption">Введите имя:</string>
+    <string name="show_snack">Show snack</string>
+    <string name="snack_text">Урраа!!!</string>
+    <string name="snack_action_text">Точно</string>
+    <string name="toast_text">Ура!Ура!Ура!</string>
 </resources>
