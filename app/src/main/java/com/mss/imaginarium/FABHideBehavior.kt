@@ -20,10 +20,12 @@ class FABHideBehavior(context: Context, attrSet: AttributeSet) : FloatingActionB
     ) {
         super.onNestedScroll(coordinatorLayout, child, target, dxConsumed, dyConsumed, dxUnconsumed, dyUnconsumed, type)
 
-        if (child.visibility == View.VISIBLE && dyConsumed > 0) {
-            child.visibility = View.INVISIBLE
-        } else if (child.visibility != View.VISIBLE && dyConsumed < 0) {
-            child.visibility = View.VISIBLE
+        if (dyConsumed > 0) {
+            val layoutParams = child.layoutParams as CoordinatorLayout.LayoutParams
+            val fab_leftMargin = layoutParams.leftMargin
+            child.animate().translationX((child.width + fab_leftMargin).toFloat()).start()
+        } else if (dyConsumed < 0) {
+            child.animate().translationX(0f).start()
         }
     }
 
