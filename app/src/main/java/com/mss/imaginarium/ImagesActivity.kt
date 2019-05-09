@@ -16,12 +16,31 @@ class ImagesActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
 
     companion object {
 
-        private val fruitsList = arrayListOf<ImageInfo>()
+        private val fruitsAdapter: ImagesAdapter
+        private val vegetablesAdapter: ImagesAdapter
+        private val naturesAdapter: ImagesAdapter
+        private var currentAdapter: ImagesAdapter
 
         init {
+            val fruitsList = arrayListOf<ImageInfo>()
             fruitsList.add(ImageInfo("Яблоко", R.drawable.apple))
             fruitsList.add(ImageInfo("Ананас", R.drawable.pineapple))
             fruitsList.add(ImageInfo("Кокос", R.drawable.cocos))
+            fruitsAdapter = ImagesAdapter(fruitsList)
+
+            currentAdapter = fruitsAdapter
+
+            val vegetablesList = arrayListOf<ImageInfo>()
+            vegetablesList.add(ImageInfo("Морковь", R.drawable.carrots))
+            vegetablesList.add(ImageInfo("Помидор", R.drawable.tomatos))
+            vegetablesList.add(ImageInfo("Капуста", R.drawable.cabbges))
+            vegetablesAdapter = ImagesAdapter(vegetablesList)
+
+            val naturesList = arrayListOf<ImageInfo>()
+            naturesList.add(ImageInfo("Природа1", R.drawable.nature1))
+            naturesList.add(ImageInfo("Природа2", R.drawable.nature2))
+            naturesList.add(ImageInfo("Природа3", R.drawable.nature3))
+            naturesAdapter = ImagesAdapter(naturesList)
         }
     }
 
@@ -46,7 +65,7 @@ class ImagesActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         nav_view.setNavigationItemSelectedListener(this)
 
         rvImages.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        rvImages.adapter = ImagesAdapter(fruitsList)
+        rvImages.adapter = currentAdapter
 
     }
 
@@ -61,13 +80,13 @@ class ImagesActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.nav_fruits -> {
-
+                changeAdapter(fruitsAdapter)
             }
             R.id.nav_vegetables -> {
-
+                changeAdapter(vegetablesAdapter)
             }
             R.id.nav_nature -> {
-
+                changeAdapter(naturesAdapter)
             }
             R.id.nav_exit -> {
                 super.onBackPressed()
@@ -75,5 +94,10 @@ class ImagesActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         }
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
+    }
+
+    private fun changeAdapter(adapter: ImagesAdapter) {
+        currentAdapter = adapter
+        rvImages.adapter = currentAdapter
     }
 }
