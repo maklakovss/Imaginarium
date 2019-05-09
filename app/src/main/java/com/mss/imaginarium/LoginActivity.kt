@@ -13,6 +13,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         btnLogin.setOnClickListener(this)
+        btnClose.setOnClickListener { finish() }
     }
 
     override fun onClick(view: View) {
