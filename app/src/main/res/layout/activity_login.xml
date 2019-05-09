@@ -26,7 +26,8 @@
                 android:id="@+id/etLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/login_edit_hint"/>
+                android:hint="@string/login_edit_hint" android:text="123" android:singleLine="false"
+                android:imeOptions="actionDone"/>
 
     </android.support.design.widget.TextInputLayout>
 

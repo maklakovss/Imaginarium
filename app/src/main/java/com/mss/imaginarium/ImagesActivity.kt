@@ -6,24 +6,31 @@ import android.support.design.widget.Snackbar
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.Toolbar
+import android.support.v7.widget.LinearLayoutManager
 import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_images.*
 import kotlinx.android.synthetic.main.app_bar_images.*
+import kotlinx.android.synthetic.main.content_images.*
 
 class ImagesActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
+    companion object {
+
+        private val fruitsList = arrayListOf<ImageInfo>()
+
+        init {
+            fruitsList.add(ImageInfo("Яблоко", R.drawable.apple))
+            fruitsList.add(ImageInfo("Ананас", R.drawable.pineapple))
+            fruitsList.add(ImageInfo("Кокос", R.drawable.cocos))
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_images)
-        val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
-        }
+        fab.setOnClickListener { Snackbar.make(it, "Replace with your own action", Snackbar.LENGTH_LONG).show() }
 
         val toggle = ActionBarDrawerToggle(
             this,
@@ -37,6 +44,10 @@ class ImagesActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         toggle.syncState()
 
         nav_view.setNavigationItemSelectedListener(this)
+
+        rvImages.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        rvImages.adapter = ImagesAdapter(fruitsList)
+
     }
 
     override fun onBackPressed() {
@@ -50,7 +61,7 @@ class ImagesActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.nav_fruits -> {
-                // Handle the camera action
+
             }
             R.id.nav_vegetables -> {
 
