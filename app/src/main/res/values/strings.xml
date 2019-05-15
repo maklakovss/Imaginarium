@@ -25,4 +25,8 @@
     <string name="fragment1">Fragment1</string>
     <string name="fragment2">Fragment2</string>
     <string name="fragment3">Fragment3</string>
+    <string name="title_activity_bottom">BottomActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>
