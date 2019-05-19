@@ -10,6 +10,23 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
         <activity
+                android:name=".Theme1Activity"
+                android:label="@string/title_activity_main"
+                android:theme="@style/GreenTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".StyleActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
                 android:name=".ImagesActivity"
                 android:label="@string/title_activity_images"
                 android:theme="@style/AppTheme.NoActionBar">
